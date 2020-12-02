@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333333;
+  font: 14px Arial, sans-serif;
+}
+
+.divzola {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buttonzola {
+  color: #FFFFFF;
+  border: 10px solid #ce535375;
+  height: 50px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #ce5353;
+  margin: 10px;
+}
+
+.ulzola {
+  list-style: none;
+}
+
+.lizola {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 5px;
+}
+
+.h2zola {
+  font-size: 40px;
+  font-weight: 600;
+  color: #ce5353;
+  margin: 10px;
+}
