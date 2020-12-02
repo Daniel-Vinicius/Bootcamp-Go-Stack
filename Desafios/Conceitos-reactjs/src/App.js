@@ -1,29 +1,84 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./styles.css";
+import api from "./services/api";
 
 function App() {
+  const [repositories, setRepositories] = useState([]);
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  // const [techs, setTechs] = useState([]);
+
+  const handleTitle = event => {
+    setTitle(event.target.value);
+  };
+
+  const handleUrl = event => {
+    setUrl(event.target.value);
+  };
+
+  useEffect(() => {
+    api.get("repositories").then(response => {
+      setRepositories(response.data);
+    });
+  }, []);
+
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post("repositories", {
+      title: title,
+      techs: ["Node.js", "React"],
+      url: url,
+    });
+
+    const repository = response.data;
+
+    setRepositories([...repositories, repository]);
   }
 
   async function handleRemoveRepository(id) {
-    // TODO
+    await api.delete(`repositories/${id}`);
+
+    setRepositories(repositories.filter(repository => repository.id !== id));
   }
 
   return (
     <div>
-      <ul data-testid="repository-list">
-        <li>
-          Repositório 1
-
-          <button onClick={() => handleRemoveRepository(1)}>
-            Remover
-          </button>
-        </li>
+      <ul data-testid='repository-list'>
+        {repositories.map(repository => {
+          return (
+            <li key={repository.id}>
+              <a
+                href={`https://${repository.url}`}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                {repository.title}
+              </a>
+              <button onClick={() => handleRemoveRepository(repository.id)}>
+                Remover
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
-      <button onClick={handleAddRepository}>Adicionar</button>
+      <input
+        type='text'
+        placeholder='Nome Do Repositório'
+        onChange={handleTitle}
+        value={title}
+      />
+      <input
+        type='text'
+        readOnly={false}
+        placeholder='URL Do Repositório sem HTTP'
+        onChange={handleUrl}
+        value={url}
+      />
+
+      <button id='adicionar' onClick={handleAddRepository}>
+        Adicionar
+      </button>
     </div>
   );
 }

@@ -6,16 +6,36 @@
 
 body {
   font-size: 14px;
+  font-family: Arial, sans-serif;
+  background-color: #333333;
+  overflow-x: hidden;
 }
 
 div {
   width: 100%;
   margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 div li {
   display: flex;
   align-items: center;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+a {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;  
+}
+
+a:hover {
+  transition: 0.5s;
+  color: #4f88c9;
 }
 
 div li + li {
@@ -23,7 +43,7 @@ div li + li {
 }
 
 button {
-  background: #7159c1;
+  background: #4f88c9;
   color: #fff;
   border: 0;
   padding: 10px 15px;
@@ -31,9 +51,26 @@ button {
   margin-top: 15px;
   font-weight: bold;
   font-size: 14px;
+  border-radius: 10px;
 }
 
 div li button {
   margin: 0 15px;
   background: #ca4949;
+}
+
+#adicionar {
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+input {
+  border-radius: 10px;
+  height: 30px;
+  width: 60%;
+  margin-top: 15px;
+  border: none;
+  padding: 10px;
+  min-width: 200px;
 }
