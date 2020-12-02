@@ -13,8 +13,8 @@ Projeto finalizado ✔
  As seguintes ferramentas foram usadas na construção do projeto:
  
   - [React](https://reactjs.org/)
-  - [Typescript](https://www.typescriptlang.org/docs/)
-  - [Styled Components](https://styled-components.com/docs)
+  - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+  - [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 
 
 ### 👨‍💻Autor <a id="autor"> </a>
