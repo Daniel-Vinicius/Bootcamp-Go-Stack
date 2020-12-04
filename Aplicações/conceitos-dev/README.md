@@ -1,6 +1,6 @@
 # Conceitos Dev Bootcamp GoStack
  <p id="sobre">
-⬛ Nessa Aplicação treinamos os conceitos de ReactJS e NodeJS
+⬛ Nessa Aplicação treinamos os conceitos de ReactJS, NodeJS e React Native
 
 <!-- Coloque o status do projeto -->
 <h4 align="left">  
