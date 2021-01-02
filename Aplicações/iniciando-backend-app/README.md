@@ -19,3 +19,5 @@ ORM
 }
 
 ```
+KISS Simples e Estupido
+
