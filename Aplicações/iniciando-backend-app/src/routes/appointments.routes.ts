@@ -9,11 +9,17 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository';
 // Importações de Services
 import CreateAppointmentService from '../services/CreateAppointmentService';
 
+// Importações de Middlewares
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+
 const appointmentsRouter = Router();
+
+appointmentsRouter.use(ensureAuthenticated);
 
 appointmentsRouter.get('/', async (request, response) => {
   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
   const appointments = await appointmentsRepository.find();
+  console.log(request.user);
 
   return response.json(appointments);
 });

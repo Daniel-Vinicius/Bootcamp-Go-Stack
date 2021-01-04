@@ -1,17 +1,16 @@
 import { Router } from 'express';
 
-import CreateUserService from '../services/CreateUserService';
+import AuthenticateUserService from '../services/AuthenticateUserService';
 
-const usersRouter = Router();
+const sessionsRouter = Router();
 
-usersRouter.post('/', async (request, response) => {
+sessionsRouter.post('/', async (request, response) => {
   try {
-    const { name, email, password } = request.body;
+    const { email, password } = request.body;
 
-    const createUser = new CreateUserService();
+    const AuthenticateUser = new AuthenticateUserService();
 
-    const user = await createUser.execute({
-      name,
+    const { user, token } = await AuthenticateUser.execute({
       email,
       password,
     });
@@ -23,10 +22,10 @@ usersRouter.post('/', async (request, response) => {
     // @ts-expect-error
     delete user.password;
 
-    return response.json(user);
+    return response.json({ user, token });
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
 });
 
-export default usersRouter;
+export default sessionsRouter;
