@@ -20,6 +20,9 @@ export default function ensureAuthenticated(
     throw new Error('JWT token is missing');
   }
 
+  /* Isso é bem legal no Typescript/Javascript quando você tem uma variável e que separar ela você usa o split com espaço
+  e pega só a parte que você vai usar. Como você pode notar abaixo eu não vou usar o a primeira parte de authHeader
+  e para não criar uma variável que não vou usar eu só coloco uma vírgula */
   const [, token] = authHeader.split(' ');
 
   try {

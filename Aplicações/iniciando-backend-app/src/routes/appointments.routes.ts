@@ -19,7 +19,7 @@ appointmentsRouter.use(ensureAuthenticated);
 appointmentsRouter.get('/', async (request, response) => {
   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
   const appointments = await appointmentsRepository.find();
-  console.log(request.user);
+  // console.log(request.user); Esse console.log mostra o id do usuário
 
   return response.json(appointments);
 });
