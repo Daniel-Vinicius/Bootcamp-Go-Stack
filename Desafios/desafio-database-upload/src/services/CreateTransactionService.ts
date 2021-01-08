@@ -21,8 +21,7 @@ class CreateTransactionService {
   }: Request): Promise<Transaction> {
     const transactionsRepository = getCustomRepository(TransactionsRepository);
     const categoriesRepository = getRepository(Category);
-    const transactions = await transactionsRepository.find();
-    const { total } = await transactionsRepository.getBalance(transactions);
+    const { total } = await transactionsRepository.getBalance();
 
     if (!title || !category || !type || !value) {
       throw new AppError('Please fill in all fields');
@@ -36,40 +35,23 @@ class CreateTransactionService {
       throw new AppError('You dont have enough balance');
     }
 
-    const categoryExists = await categoriesRepository.findOne({
-      where: { category },
+    let transactionCategory = await categoriesRepository.findOne({
+      where: { title: category },
     });
 
-    if (categoryExists) {
-      const transaction = transactionsRepository.create({
-        title,
-        value,
-        type,
-        category_id: categoryExists.id,
+    if (!transactionCategory) {
+      transactionCategory = categoriesRepository.create({
+        title: category,
       });
 
-      await transactionsRepository.save(transaction);
-
-      return transaction;
-    }
-
-    const createCategory = categoriesRepository.create({
-      title: category,
-    });
-
-    await categoriesRepository.save(createCategory);
-
-    const id_category = await categoriesRepository.findOne();
-
-    if (!id_category) {
-      throw new AppError('Internal server error');
+      await categoriesRepository.save(transactionCategory);
     }
 
     const transaction = transactionsRepository.create({
       title,
       value,
       type,
-      category_id: id_category.id,
+      category: transactionCategory,
     });
 
     await transactionsRepository.save(transaction);
