@@ -1,6 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 // Polished é uma Lib para se trabalhar com cores
 import { shade } from 'polished';
+
+// Passando Novas Propriedades a elementos HTML via Styled Components Crio uma interface
+interface FormProps {
+  hasError: boolean;
+}
 
 export const Title = styled.h1`
   font-size: 48px;
@@ -11,7 +16,8 @@ export const Title = styled.h1`
   margin-top: 80px;
 `;
 
-export const Form = styled.form`
+// Passando Novas Propriedades a elementos HTML via Styled Components Passo a Interface Aqui
+export const Form = styled.form<FormProps>`
   margin-top: 40px;
   max-width: 700px;
 
@@ -24,6 +30,28 @@ export const Form = styled.form`
     border: 0;
     border-radius: 5px 0px 0px 5px;
     color: #3a3a3a;
+    border: solid 2px #fff;
+    border-right: 0;
+
+    /*
+    Usando as Props de Componentes Via Styled Components
+    Faço da segunte maneira:
+    Primeiro importo o css do styled components
+    import styled, { css } from 'styled-components';
+    depois Faço algo parecido a abaixo, about é a propriedade do form,
+    o && simboliza caso essa propriedade esteja preenchida aplique o estilo dentro de css
+      ${(props) =>
+      props.about &&
+      css`
+        border-color: #c53030;
+      `}
+    */
+
+    ${(props) =>
+      props.hasError &&
+      css`
+        border-color: #c53030;
+      `}
 
     // O & Comercial representa o elemento atual no caso input
     &::placeholder {
@@ -46,6 +74,12 @@ export const Form = styled.form`
       background: ${shade(0.2, '#04d361')};
     }
   }
+`;
+
+export const Error = styled.span`
+  display: block;
+  color: #c53030;
+  margin-top: 8px;
 `;
 
 export const Repositories = styled.div`
@@ -79,7 +113,8 @@ export const Repositories = styled.div`
     }
 
     div {
-      margin-left: 16px;
+      margin: 0 16px;
+      flex: 1;
 
       strong {
         font-size: 20px;

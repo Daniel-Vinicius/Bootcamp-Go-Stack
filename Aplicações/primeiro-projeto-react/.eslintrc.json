@@ -29,18 +29,14 @@
     "prettier"
   ],
   "rules": {
+    "camelcase": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [
-          ".tsx"
-        ]
-      }
-    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
@@ -55,10 +51,7 @@
         "ts": "never",
         "tsx": "never"
       }
-    ],
-  // note you must disable the base rule as it can report incorrect errors
-  "no-use-before-define": "off",
-  "@typescript-eslint/no-use-before-define": ["error"]
+    ]
   },
   "settings": {
     "import/resolver": {
