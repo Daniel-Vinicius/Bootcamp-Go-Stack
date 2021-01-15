@@ -109,6 +109,7 @@ export const Repositories = styled.div`
     img {
       width: 64px;
       height: 64px;
+      // Sempre que você quiser que uma imagem fique 100% arrendondada use 50% de border Radius
       border-radius: 50%;
     }
 
@@ -127,7 +128,7 @@ export const Repositories = styled.div`
         margin-top: 4px;
       }
     }
-    // o seletro svg quase sempre consegue estilizar todos os ícones
+    // o seletor svg quase sempre consegue estilizar todos os ícones
     svg {
       margin-left: auto;
       color: #cbcbd6;
