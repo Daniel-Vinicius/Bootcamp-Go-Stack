@@ -70,6 +70,21 @@ export const RepositoryInfo = styled.section`
       }
     }
   }
+  @media (max-width: 450px) {
+    header {
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+    ul {
+      li {
+        & + li {
+          margin-left: 40px;
+        }
+      }
+    }
+  }
 `;
 
 export const Issues = styled.div`

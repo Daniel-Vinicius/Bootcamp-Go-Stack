@@ -23,6 +23,11 @@ export const Form = styled.form<FormProps>`
 
   display: flex;
 
+  @media (max-width: 450px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   input {
     flex: 1;
     height: 70px;
@@ -33,20 +38,6 @@ export const Form = styled.form<FormProps>`
     border: solid 2px #fff;
     border-right: 0;
 
-    /*
-    Usando as Props de Componentes Via Styled Components
-    Faço da segunte maneira:
-    Primeiro importo o css do styled components
-    import styled, { css } from 'styled-components';
-    depois Faço algo parecido a abaixo, about é a propriedade do form,
-    o && simboliza caso essa propriedade esteja preenchida aplique o estilo dentro de css
-      ${(props) =>
-      props.about &&
-      css`
-        border-color: #c53030;
-      `}
-    */
-
     ${(props) =>
       props.hasError &&
       css`
@@ -56,6 +47,18 @@ export const Form = styled.form<FormProps>`
     // O & Comercial representa o elemento atual no caso input
     &::placeholder {
       color: #a8a8b3;
+    }
+    @media (max-width: 450px) {
+      min-height: 45px;
+      width: 100%;
+      border: solid 2px #fff;
+      border-radius: 5px;
+
+      ${(props) =>
+        props.hasError &&
+        css`
+          border-color: #c53030;
+        `}
     }
   }
 
@@ -72,6 +75,14 @@ export const Form = styled.form<FormProps>`
     // A função shade diminui o brilho, no caso ela diminuiu 20%
     &:hover {
       background: ${shade(0.2, '#04d361')};
+    }
+
+    @media (max-width: 450px) {
+      min-height: 40px;
+      margin-top: 10px;
+      border-radius: 5px;
+      width: 100%;
+      flex: 1 0 100%;
     }
   }
 `;

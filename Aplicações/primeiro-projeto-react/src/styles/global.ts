@@ -20,7 +20,7 @@ body, input, button {
   font: 16px Roboto, sans-serif;
 }
 
-// Essa é uma ótima forma de deixar uma aplicação responsiva sem usar @media query
+// Definir Max-Width em Root é ótimo pois deixa mais fácil de deixar responsivo
 #root {
   max-width: 960px;
   margin: 0 auto;
