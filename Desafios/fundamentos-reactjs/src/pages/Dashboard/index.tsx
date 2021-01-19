@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
 
     loadTransactions();
     // console.log(transactions, balance);
-  }, [transactions, balance]);
+  }, []);
 
   return (
     <>
@@ -106,11 +106,11 @@ const Dashboard: React.FC = () => {
                 <tr key={transaction.id}>
                   <td className="title">{transaction.title}</td>
                   <td className={transaction.type}>
-                    {transaction.type === 'outcome' && ' -'}
+                    {transaction.type === 'outcome' && ' - '}
                     {transaction.formattedValue}
                   </td>
                   <td>{transaction.category.title}</td>
-                  <td>{transaction.created_at}</td>
+                  <td>{transaction.formattedDate}</td>
                 </tr>
               ))}
             </tbody>
