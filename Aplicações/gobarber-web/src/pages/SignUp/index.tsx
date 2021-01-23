@@ -11,7 +11,8 @@ import Button from '../../components/Button';
 import { Container, Content, Background } from './styles';
 
 const SignUp: React.FC = () => {
-  const handleSubmit = useCallback(async (data: any) => {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const handleSubmit = useCallback(async (data: object) => {
     try {
       const schema = Yup.object().shape({
         name: Yup.string().required('Nome é obrigatório'),
