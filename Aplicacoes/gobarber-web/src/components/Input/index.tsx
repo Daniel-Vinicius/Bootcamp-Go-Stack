@@ -9,8 +9,6 @@ import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
-import Tooltip from '../Tooltip';
-
 import { Container, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -23,7 +21,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   // useField é um hook do unform que recebe basicamente o nome do campo, e retorna várias propriedades
-  // Quando se utiliza o Unform é nescessário dizer a ele quais campos monitorar o valor registerField
+  // Quando se utiliza o Unform é nescessário dizer a ele quais campos monitorar. https://unform.dev/api/use-field
   const { fieldName, defaultValue, error, registerField } = useField(name);
 
   // Função dentro de função fica recriando e piora performace, use useCallback
@@ -39,6 +37,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   }, []);
 
   useEffect(() => {
+    // registerField é o método usado para registrar um campo no Unform.
     registerField({
       name: fieldName,
       ref: inputRef.current,
